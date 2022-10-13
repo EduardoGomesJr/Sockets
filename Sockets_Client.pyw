@@ -86,6 +86,15 @@ def download():
         client.close()
         window.destroy()
 
+# Função: ButtonState
+# Descrição: Habilita botão DOWNLOAD apenas com algum arquivo selecionado
+# Data: 12/10/2022
+# Autor: Eduardo Gomes Júnior
+
+
+def ButtonState(self):
+    button1['state'] = "enable"
+
 
 # Cria interface (tela) para seleção de arquivo que será copiado
 window = Tk()
@@ -99,10 +108,10 @@ label = Label(text="Selecione o arquivo:").pack()
 
 LOGSBox = Combobox(window, textvariable=logs)
 LOGSBox['values'] = listFiles()
-
 LOGSBox['state'] = 'readonly'
 
-LOGSBox.bind('<<ComboboxSelected>>')
+
+LOGSBox.bind('<<ComboboxSelected>>', ButtonState)
 LOGSBox.pack(fill=X, padx=5, pady=5)
 
 bar = Progressbar(window, orient=HORIZONTAL, length=400)
@@ -110,6 +119,8 @@ bar.pack(pady=10)
 
 percentLabel = Label(window, textvariable=percent).pack()
 GBLabel = Label(window, textvariable=text).pack()
-button1 = Button(window, text="Download", command=download).pack()
+button1 = Button(window, text="Download", command=download)
+button1['state'] = "disable"
+button1.pack()
 
 window.mainloop()
