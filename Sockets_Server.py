@@ -1,61 +1,93 @@
 # Rotina: Sockets_Server
 # Descrição: SERVER - Aplicativo SERVER.
-# Data: 07/10/2022
+# Data: 12/10/2022
 # Autor: Eduardo Gomes Júnior
 
 import socket
 import os
 import configparser
 import logging
+from Sockets_Server_Win import Sockets_Server_Win
 
-# Criação/configuração de arquivo de LOG
-logging.basicConfig(level=logging.INFO, filename="Sockets_Server.log",
-                    format="%(asctime)s - %(levelname)s - %(message)s")
+# Classe: Start_Sockets_Server
+# Descrição: Classe para iniciar serviço no Windows
+# Data: 12/10/2022
 
-# Abre arquivo de configurações (INI).
-INI = configparser.ConfigParser()
 
-INI.read_file(open('\\Sockets_Server\\Sockets_Server.ini'))
+class Sockets_Server(Sockets_Server_Win):
+    _svc_name_ = "Sockets_Server"
+    _svc_display_name_ = "Sockets_Server"
+    _svc_description_ = "Serviço para Copia de arquivos via SOCKETS (CLIENT/SERVER)"
 
-# Carrega do arquivo INI informações: endereço do servidor/porta/diretório.
-SERVER = str(INI.get('Sockets_Server', 'Server'))
-PORT = INI.getint('Sockets_Server', 'Port')
-DIRATU = str(INI.get('Sockets_Server', 'Directory_Files'))
+    # Rotina: start
+    # Descrição: Inicia serviço
+    # Data: 12/10/2022
+    def start(self):
+        self.isrunning = True
 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # Rotina: stop
+    # Descrição: Parar serviço
+    # Data: 12/10/2022
+    def stop(self):
+        self.isrunning = False
 
-server.bind((SERVER, PORT))
-server.listen()
+    # Rotina: main
+    # Descrição: Rotina que recebe conexões e envia arquivos solicitados
+    # Data: 12/10/2022
+    def main(self):
 
-logging.info("Sockets_Server - Versão 1.0")
-logging.info("Aguardando conexões...")
+        # Criação/configuração de arquivo de LOG
+        logging.basicConfig(level=logging.INFO, filename="\\Sockets_Server\\Sockets_Server.log",
+                            format="%(asctime)s - %(levelname)s - %(message)s")
 
-while True:
+        # Abre arquivo de configurações (INI).
+        INI = configparser.ConfigParser()
 
-    connection, andress = server.accept()
+        INI.read_file(open('\\Sockets_Server\\Sockets_Server.ini'))
 
-    logging.info(f"Conectado : {andress}")
+        # Carrega do arquivo INI informações: endereço do servidor/porta/diretório.
+        SERVER = str(INI.get('Sockets_Server', 'Server'))
+        PORT = INI.getint('Sockets_Server', 'Port')
+        DIRATU = str(INI.get('Sockets_Server', 'Directory_Files'))
 
-    namefile = connection.recv(1024).decode()
+        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    if namefile == 'FILESATU':
+        server.bind((SERVER, PORT))
+        server.listen()
 
-        FILESATU = os.listdir(DIRATU)
-        FILEREL = str(FILESATU)
+        logging.info("Sockets_Server - Versão 1.0")
+        logging.info("Aguardando conexões...")
 
-        connection.sendall(FILEREL.encode())
-    else:
+        while True:
 
-        with open(DIRATU + '//' + namefile, 'rb') as file:
+            connection, andress = server.accept()
 
-            for data in file.readlines():
-                connection.send(data)
+            logging.info(f"Conectado : {andress}")
 
-    connection.close()
+            namefile = connection.recv(1024).decode()
 
-    if namefile == 'FILESATU':
-        logging.info(f"Relação de arquivos enviados para: {andress}")
-    else:
-        logging.info(f"Arquivo: {namefile} enviado para : {andress}")
+            if namefile == 'FILESATU':
 
-    logging.info(f"Desconectando: {andress}")
+                FILESATU = os.listdir(DIRATU)
+                FILEREL = str(FILESATU)
+
+                connection.sendall(FILEREL.encode())
+            else:
+
+                with open(DIRATU + '//' + namefile, 'rb') as file:
+
+                    for data in file.readlines():
+                        connection.send(data)
+
+            connection.close()
+
+            if namefile == 'FILESATU':
+                logging.info(f"Relação de arquivos enviados para: {andress}")
+            else:
+                logging.info(f"Arquivo: {namefile} enviado para : {andress}")
+
+            logging.info(f"Desconectando: {andress}")
+
+
+if __name__ == '__main__':
+    Sockets_Server.parse_command_line()
