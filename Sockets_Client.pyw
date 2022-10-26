@@ -36,13 +36,21 @@ def listFiles():
 
     client.send(namefile.encode())
 
-    data = client.recv(1024)
-    data = data.decode('utf-8')
-    data = eval(data)
+    datareceiver = ''
 
+    while True:
+
+        data = client.recv(1024)
+        datareceiver += data.decode('utf-8')
+
+        if not data:
+            break
+
+    datareceiver = datareceiver[:-1]
+    datareceiver = datareceiver.split(',')
     client.close()
 
-    return data
+    return datareceiver
 
 # Função: download
 # Descrição: Realiza copia do arquivo selecionado
