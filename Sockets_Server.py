@@ -69,9 +69,9 @@ class Sockets_Server(Sockets_Server_Win):
             if namefile == 'FILESATU':
 
                 FILESATU = os.listdir(DIRATU)
-                FILEREL = str(FILESATU)
 
-                connection.sendall(FILEREL.encode())
+                for FILEREL in FILESATU:
+                    connection.send(f"{FILEREL},".encode())
             else:
 
                 with open(DIRATU + '//' + namefile, 'rb') as file:
