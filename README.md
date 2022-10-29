@@ -26,6 +26,6 @@ pip install configparser
 
 pip install pywin32
 
-![Imagem01](https://github.com/EduardoGomesJr/Sockets/tree/main/Imagens/Figura01.png)
+![Imagem01](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura01.png)
 
  
