@@ -23,6 +23,9 @@ Detalhes no arquivo: requirements.txt
 Para instalar ambas utilizar PIP: acesse o prompt de comando (como administrador) e execute os comandos abaixo:
 
 pip install configparser 
+
 pip install pywin32
+
+![Imagem01](https://github.com/EduardoGomesJr/Sockets/tree/main/Imagens/Figura01.png)
 
  
