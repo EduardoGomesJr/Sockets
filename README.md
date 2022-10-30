@@ -7,7 +7,7 @@
  
  # Instalação
  
- Tecnologia Usada:
+ ## Tecnologia Usada:
  
  Tanto o BACK END como FRONT END é desenvolvido em PYTHON. A versão do PYTHON usada é a 3.10, porém o mesmo funcionou corretamente nas versões 3.9 e 3.8. Para instalação/execução será necessário a instalação do PYTHON caso não exista. 
 
@@ -34,7 +34,7 @@ Após os pré-requisitos acima realizar o clone do repositório: https://github.
 
 Como a aplicação é divida em duas partes: SERVIDOR e CLIENTE após descompactar o arquivo serão necessários realizar a instalação/configuração em duas etapas.
 
-1-	Servidor (SERVER): na máquina que será usada como servidor criar uma pasta chamada: “Sockets_Server”
+## Servidor (SERVER): na máquina que será usada como servidor criar uma pasta chamada: “Sockets_Server”
 MD Sockets_Server (para criar a pasta)
 
 Dentro da pasta copiar os arquivos Sockets_Server.INI, Sockets_Server.PY e Sockets_Server_Win.PY
@@ -67,11 +67,17 @@ python Sockets_Server.py install <ENTER>
 
 ![Imagem06](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura06.png)
 
-Para iniciar/parar o serviço pasta iniciar ele normalmente usando as opções disponíveis.
+Para iniciar/parar o serviço basta iniciar ele normalmente usando as opções disponíveis.
 
 ![Imagem07](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura07.png)
 
-Após o serviço iniciado a parte do servidor não precisa mais ser alterado, pode ficar rodando o tempo necessário. Caso haja necessidade de alguma alteração nas rotinas Sockets_Server.py ou Sockets_Server_Win.py para subir essas alterações para o serviço. Pasta acessar novamente a pasta do Sockets_Server como administrador e executar o comando:
+Após o serviço iniciado a parte do servidor não precisa mais ser alterado, pode ficar rodando o tempo necessário. 
+
+Assim que o serviço é criado/iniciado dentro da pasta Sockets_Server é criado o arquivo de LOG para monitoramento das solicitações/requisições/envio. O arquivo de LOG é gravado como Sockets-Server.LOG é um arquivo texto e pode ser visualizado com qualquer editor.
+
+![Imagem12](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura12.png)
+
+Caso haja necessidade de alguma alteração nas rotinas Sockets_Server.py ou Sockets_Server_Win.py para subir essas alterações para o serviço. Pasta acessar novamente a pasta do Sockets_Server como administrador e executar o comando:
 
 			python Sockets_Server.py update <ENTER>
 
