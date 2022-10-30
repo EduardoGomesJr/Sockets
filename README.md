@@ -151,6 +151,9 @@ Após isso gerar o executável: pyinstaller --onefile -w Sockets_Client.pyw
 
 
 
+Autor: Eduardo Gomes Júnior - Contato: eduardo@egjconsultoria.com
+
+
 
 
 
