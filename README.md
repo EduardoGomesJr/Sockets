@@ -90,7 +90,24 @@ Caso haja necessidade de excluir o serviço por algum motivo, basta usar o coman
 			sc delete Sockets_Server
 
 ![Imagem09](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura09.png)
- 
+
+Após isso o serviço é excluído do Windows.
+
+Observações: em algumas instalações do serviço pode ocorrer erro de DLLS (bibliotecas) não encontradas. Caso ocorra esse problema pasta copiar os arquivos python310.dll e pywintypes310.dll para dentro da pasta: Python\Python310\lib\site-packages\win32 que o problema é resolvido. PYTHON310 corresponde a versão do Python instalada esse número pode mudar caso seja usado outra versão.
+
+A DLL python310.dll fica no caminho: “\AppData\Local\Programs\Python\Python310” já a pywintypes310.dll em: \AppData\Local\Programs\Python\Python310\Lib\site-packages\pywin32_system32
+
+![Imagem10](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura10.png)
+
+## CLIENT (CLIENTE): para instalação do CLIENT o processo é igual ao SERVER. Deve ser criada uma pasta chamada: Sockets_Client
+
+MD Sockets_Server (para criar a pasta)
+
+Dentro da pasta copiar os arquivos Sockets_Client.INI e Sockets_Client.PYW
+
+O Arquivo INI do CLIENT contém as informações do servidor que será acessado juntamente da sua porta iguais ao do SERVER. A única diferença aqui é o Directory_Files o caminho dele indica onde serão gravados os arquivos copiados do servidor.
+
+ ![Imagem11](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura11.png)
 
 
 
