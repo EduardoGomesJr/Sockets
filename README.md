@@ -108,6 +108,55 @@ Dentro da pasta copiar os arquivos Sockets_Client.INI e Sockets_Client.PYW
 O Arquivo INI do CLIENT contém as informações do servidor que será acessado juntamente da sua porta iguais ao do SERVER. A única diferença aqui é o Directory_Files o caminho dele indica onde serão gravados os arquivos copiados do servidor.
 
  ![Imagem11](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura11.png)
+ 
+ ## Execução:
+ 
+ Com o serviço criado/iniciado, basta executar o rotina (script) Sockets_Cliente.pyw (dentro da pasta Sockets_Client) após isso é carregado a interface de seleção de arquivos.
+ 
+![Imagem13](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura13.png)
+
+Será aberta a tela (interface) para seleção de arquivos. Basta pressionar o COMBOBOX e todos os arquivos disponíveis no servidor são carregados para está lista. Após isso selecionar o arquivo deseja e pressionar o botçao DOWNLOAD. Com isso o arquivo selecionado é copiado do SERVIDOR para o CLIENTE (a pasta que ele irá ser salvo é a pasta informada no arquivo INI do CLIENT).
+
+![Imagem14](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura14.png)
+
+![Imagem15](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura15.png)
+
+![Imagem16](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura16.png)
+
+Após pressionar o botão DOWNLOAD o arquivo selecionado é copiado para o CLIENTE.
+
+![Imagem17](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura17.png)
+
+Realizando outra copia:
+
+![Imagem18](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura18.png)
+
+![Imagem19](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura19.png)
+
+Consultando o arquivo de LOG do SERVIDOR, temos todas as solicitações/requisições realizadas no arquivo:
+
+![Imagem20](https://github.com/EduardoGomesJr/Sockets/blob/main/Imagens/Figura20.png)
+
+Quando é aberta a rotina CLIENT é enviada uma solicitação para o servidor solicitando a relação de arquivos existentes no diretório configurado para copia, após isso essa relação é atualizada no COMBOBOX da rotina, na sequencia o usuário seleciona um determinado arquivo e pede para o servidor mandar para ele, com isso o arquivo é enviado. Todas essas solicitações/requisições são gravadas no LOG do Server.
+
+Observações: na parte do servidor é necessário ter o PYTHON instalado para poder criar/subir o serviço no Windows. Já para o CLIENTE, caso ele não queria instalar o PYTHON pode ser criado um executável da rotina Sockets_Client.PYW. Esse executável terá todas as bibliotecas básicas usadas (deve ser criado um ambiente virtual). 
+
+Para criação do executável, precisa ser instalado o pacote: pyinstaller
+
+pip install pyinstaller
+
+Após isso gerar o executável: pyinstaller --onefile -w Sockets_Client.pyw
+
+
+
+
+
+
+
+
+
+ 
+ 
 
 
 
